@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "///// BDDで開発を進める場合、右記に変更した方が使い勝手が良いかも。npm run watch & http-server & npm test /////": "",
+    "///// BDDで開発を進める場合、右記に変更した方が使い勝手が良さそう。npm run watch & http-server & npm test /////": "",
     "start": "npm run watch & http-server",
     "watch": "NODE_ENV=development webpack --watch",
+    "test": "",
     "///// 環境変数をproductionモードに変更してbuild /////": "",
     "build": "NODE_ENV=production webpack"
   },
