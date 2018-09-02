@@ -17,29 +17,39 @@ let config = [{
     // 環境によってmodeを切替える
     mode: process.env.NODE_ENV,
     entry: {
-        app: './src/app'
+        index: './src/index'
     },
     output: {
         path: `${__dirname}/dist`,
         filename: '[name].bundle.js'
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js'], // 拡張子の解決
+        extensions: ['.ts', '.js', '.vue'], // 省略可能な拡張子の設定
         alias: {
-            'vue$': 'vue/dist/vue.esm.js'
+            'vue$': 'vue/dist/vue.esm.js' // import Vue from 'vue'; のためのパス指定
         }
     },
     module: {
-        // 拡張子がtsのファイルを、ts-loaderでトランスパイルする
-        rules: [{
-            test: /\.ts$/,
-            use: 'ts-loader'
-        }]
+        rules: [
+            // 拡張子がvueのファイルを解決
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+            },
+            // 拡張子がtsのファイルを解決
+            {
+                test: /\.ts$/,
+                loader: 'ts-loader',
+                options: {
+                    appendTsSuffixTo: [/\.vue$/]
+                }
+            }
+        ]
     },
-    optimization:{
+    optimization: {
         // 複数のバンドルファイル間で共通しているモジュールを"common_lib.bundle.js"に切り出す
         splitChunks: {
-            name: 'common_lib',
+            name: 'common-lib',
             chunks: 'initial'
         }
     },
