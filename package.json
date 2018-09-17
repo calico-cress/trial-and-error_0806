@@ -1,8 +1,9 @@
 {
+  "///// 一般的なjsonはコメントが無いが、必要に応じて、このように記載しておく /////": "",
   "name": "trial-and-error_0806",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.bundle.js",
   "scripts": {
     "///// BDDで開発を進める場合、右記に変更した方が使い勝手が良さそう。npm run watch & http-server & npm test /////": "",
     "start": "npm run watch & http-server",
@@ -24,20 +25,19 @@
   "devDependencies": {
     "@types/jquery": "^3.3.1",
     "clean-webpack-plugin": "^0.1.19",
-    "typescript": "^3.0.3"
+    "http-server": "^0.11.1",
+    "ts-loader": "^5.1.1",
+    "typescript": "^3.0.3",
+    "vue-class-component": "^6.2.0",
+    "vue-loader": "^15.4.2",
+    "vue-template-compiler": "^2.5.17",
+    "webpack": "^4.19.0",
+    "webpack-cli": "^3.1.0"
   },
   "dependencies": {
     "bootstrap": "^4.1.0",
-    "global": "^4.3.2",
-    "http-server": "^0.11.1",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.3",
-    "ts-loader": "^4.2.0",
-    "vue": "^2.5.16",
-    "vue-class-component": "^6.2.0",
-    "vue-loader": "^14.2.2",
-    "vue-template-compiler": "^2.5.17",
-    "webpack": "^4.5.0",
-    "webpack-cli": "^2.0.14"
+    "vue": "^2.5.16"
   }
 }

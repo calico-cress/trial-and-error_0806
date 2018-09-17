@@ -7,6 +7,7 @@
 // webpackプラグイン
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin'); // vue-loaderのVer15から、左記が必要 
 
 // 環境変数 process.env.NODE_ENV が未設定の場合、developmentモードにしておく
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -17,7 +18,7 @@ let config = [{
     // 環境によってmodeを切替える
     mode: process.env.NODE_ENV,
     entry: {
-        index: './src/index'
+        main: './src/main.ts'
     },
     output: {
         path: `${__dirname}/dist`,
@@ -25,6 +26,9 @@ let config = [{
     },
     resolve: {
         extensions: ['.ts', '.js', '.vue'], // 省略可能な拡張子の設定
+        modules: [
+            "node_modules"
+        ],
         alias: {
             'vue$': 'vue/dist/vue.esm.js' // import Vue from 'vue'; のためのパス指定
         }
@@ -35,11 +39,13 @@ let config = [{
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
+                exclude: /node_modules/
             },
             // 拡張子がtsのファイルを解決
             {
                 test: /\.ts$/,
                 loader: 'ts-loader',
+                exclude: /node_modules/,
                 options: {
                     appendTsSuffixTo: [/\.vue$/]
                 }
@@ -64,7 +70,8 @@ let config = [{
             'process.env': {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV)
             }
-        })
+        }),
+        new VueLoaderPlugin()
     ]
 }];
 

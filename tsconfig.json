@@ -11,6 +11,7 @@
     "sourceMap": true,
     "noImplicitThis": true,
     // default export無し(export = module)での、default importを許可
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true
   }
 }
