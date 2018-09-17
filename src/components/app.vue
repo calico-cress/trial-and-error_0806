@@ -5,7 +5,7 @@
     </div>
 </template>
 
-<!-- script lang="ts" の場合、別ファイルにしないとvueファイルを読み込めない -->
+<!-- script lang="ts" の場合、別ファイルにしないとvueファイルを読み込めないかも（検証中） -->
 <script>
 import Cat from "./Kittens/index.vue";
 export default {
