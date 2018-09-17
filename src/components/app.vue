@@ -1,18 +1,13 @@
-<!-- レイアウトの変更時は、主にこのファイルを編集する -->
+<!-- メイン画面のレイアウト変更時は、このファイルを編集する -->
 <template>
     <div id="app">
         <Cat/>
     </div>
 </template>
 
-<!-- script lang="ts" の場合、別ファイルにしないとvueファイルを読み込めないかも（検証中） -->
-<script>
-import Cat from "./Kittens/index.vue";
-export default {
-  name: "app",
-  /* componentを追加したい場合、以下に追記する */
-  components: {
-    Cat
-  }
-};
-</script>
+<style scoped>
+/* CSSを追記.. */
+</style>
+
+<!-- script lang="ts" の場合、vueファイル内で別のvueファイルを読み込めない.. ファイルを分ける -->
+<script lang="ts" src="./app.ts"></script>

@@ -1,10 +1,12 @@
-import Vue from "vue";
-import Component from "vue-class-component";
+import { Component, Vue } from 'vue-property-decorator';
 
-/* デコレータ.. props等はこちらに記載する */
-@Component({
-    name: 'Kitten'
-})
+/**
+ * 子画面のクラス（子猫クラス）
+ * @export
+ * @class Kitten
+ * @extends {Vue}
+ */
+@Component
 export default class Kitten extends Vue {
     msg: string = "(*ΦωΦ*)";
 }
