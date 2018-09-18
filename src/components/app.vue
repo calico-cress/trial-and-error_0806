@@ -9,5 +9,5 @@
 /* CSSを追記.. */
 </style>
 
-<!-- script lang="ts" の場合、vueファイル内で別のvueファイルを読み込めない.. ファイルを分ける -->
+<!-- script lang="ts" の場合、vueファイル内で別のvueファイルを読み込めないかった。ファイルを分けておく -->
 <script lang="ts" src="./app.ts"></script>
