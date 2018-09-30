@@ -9,9 +9,10 @@
     // promise／async／await／fetch api..をes5で使用できるようにする
     "lib": ["dom","es2015.promise","es5"],
     "sourceMap": true,
-    "noImplicitThis": true,
     // default export無し(export = module)での、default importを許可
     "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    // 未使用のパラメータに警告
+    "noUnusedParameters": true,
   }
 }
