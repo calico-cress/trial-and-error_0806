@@ -8,5 +8,5 @@ import { Component, Vue } from 'vue-property-decorator';
  */
 @Component
 export default class Kitten extends Vue {
-    msg: string = "(*ΦωΦ*)";
+    private msg: string = '(*ΦωΦ*)';
 }
