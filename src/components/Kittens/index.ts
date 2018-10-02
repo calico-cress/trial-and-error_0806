@@ -1,7 +1,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 /**
- * 子画面のクラス（子猫クラス）
+ * 子コンポーネントのクラス（子猫クラス）
  * @export
  * @class Kitten
  * @extends {Vue}
