@@ -5,9 +5,9 @@
     </div>
 </template>
 
+<!-- script lang="ts" の場合、vueファイル内で別のvueファイルを読み込めないかった。ファイルを分けておく -->
+<script lang="ts" src="./app.ts"></script>
+
 <style scoped>
 /* CSSを追記.. */
 </style>
-
-<!-- script lang="ts" の場合、vueファイル内で別のvueファイルを読み込めないかった。ファイルを分けておく -->
-<script lang="ts" src="./app.ts"></script>

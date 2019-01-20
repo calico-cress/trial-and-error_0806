@@ -49,6 +49,14 @@ let config = [{
                 options: {
                     appendTsSuffixTo: [/\.vue$/]
                 }
+            },
+            // .cssファイルと.vueファイルの<style>ブロックに適用される
+            {
+              test: /\.css$/,
+              use: [
+                'vue-style-loader',
+                'css-loader'
+              ]
             }
         ]
     },
@@ -60,7 +68,7 @@ let config = [{
         }
     },
     // 環境によってsourcemapを切り替える
-    devtool: process.env.NODE_ENV === 'development' ? 'source-map' : false,
+    devtool: process.env.NODE_ENV === 'development' ? 'eval-source-map' : false,
     // 環境によって使用するプラグインを切り替える
     plugins: [
         new CleanWebpackPlugin(['dist']),

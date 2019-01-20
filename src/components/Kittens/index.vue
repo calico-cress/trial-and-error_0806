@@ -4,8 +4,8 @@
   </div>
 </template>
 
+<script lang="ts" src="./index.ts"></script>
+
 <style scoped>
 /* CSSを追記.. */
 </style>
-
-<script lang="ts" src="./index.ts"></script>
