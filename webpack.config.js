@@ -22,7 +22,17 @@ let config = [{
     },
     output: {
         path: `${__dirname}/dist`,
-        filename: '[name].bundle.js'
+        filename: '[name].bundle.js',
+        /* sourcemapをクリーンに出力する
+         * https://www.mistergoodcat.com/post/the-joy-that-is-source-maps-with-vuejs-and-typescript */
+        devtoolModuleFilenameTemplate: info => {
+            var $filename = 'sources://' + info.resourcePath;
+            if (info.resourcePath.match(/\.vue$/) && !info.allLoaders.match(/type=script/)) {
+                $filename = 'webpack-generated:///' + info.resourcePath + '?' + info.hash;
+            }
+            return $filename;
+        },
+        devtoolFallbackModuleFilenameTemplate: 'webpack:///[resource-path]?[hash]',
     },
     resolve: {
         extensions: ['.ts', '.js', '.vue'], // 省略可能な拡張子の設定
@@ -52,11 +62,11 @@ let config = [{
             },
             // .cssファイルと.vueファイルの<style>ブロックに適用される
             {
-              test: /\.css$/,
-              use: [
-                'vue-style-loader',
-                'css-loader'
-              ]
+                test: /\.css$/,
+                use: [
+                    'vue-style-loader',
+                    'css-loader'
+                ]
             }
         ]
     },
