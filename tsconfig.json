@@ -6,8 +6,13 @@
     "strict": true,
     "module": "es2015",
     "moduleResolution": "node",
-    // promise／async／await／fetch api..をes5で使用できるようにする
-    "lib": ["dom","es2015.promise","es5"],
+    // 最新のECMA Scriptにする
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ],
     "sourceMap": true,
     // default export無し(export = module)での、default importを許可
     "allowSyntheticDefaultImports": true,
