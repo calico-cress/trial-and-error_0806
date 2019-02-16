@@ -5,5 +5,5 @@ CLIを使わずに構築した TypeScript + Vue（SFC）の最小構成
 
 ## 参考情報
 
-- eslintについて
+- eslintについて  
 <https://tech-1natsu.hatenablog.com/entry/2019/02/10/234421>  
