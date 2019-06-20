@@ -6,7 +6,7 @@
  */
 
 // webpackプラグイン
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin'); // vue-loaderのVer15から、左記が必要
 
@@ -84,7 +84,7 @@ let config = [
             process.env.NODE_ENV === 'development' ? 'eval-source-map' : false,
         // 環境によって使用するプラグインを切り替える
         plugins: [
-            new CleanWebpackPlugin(['dist']),
+            new CleanWebpackPlugin(),
             /* vue.js公式の指定
              * todo：productionとdevelopmentで、バンドルファイルを比較したい｡｡ */
             new DefinePlugin({
