@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-table striped hover small head-variant="dark" :items="notations"></b-table>
+    <b-table striped hover small head-variant="dark" :items="dataForHorizontal"></b-table>
   </div>
 </template>
 

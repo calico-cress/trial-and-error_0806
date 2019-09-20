@@ -12,14 +12,14 @@ interface CatAttr {
 
 /**
  * 猫一覧を横表示する型
- * @interface OtherNotations
+ * @interface OtherNotation
  */
-interface OtherNotations {
+interface OtherNotation {
   [key: string]: string | boolean;
 }
 
 /**
- * 横表示テーブル
+ * 猫一覧の横表示コンポーネント
  * @export
  * @class Kitten
  * @extends {Vue}
@@ -38,10 +38,10 @@ export default class CatTable extends Vue {
    * 横表示用の算出プロパティ
    * @readonly
    * @private
-   * @type {OtherNotations[]}
+   * @type {OtherNotation[]}
    * @memberof CatTable
    */
-  private get notations(): OtherNotations[] {
+  private get dataForHorizontal(): OtherNotation[] {
     // 重複のないraceを抽出する
     const races = this.cats
       .map((x: CatAttr): string => x.race.replace(' ', '-').toLowerCase())
@@ -53,11 +53,11 @@ export default class CatTable extends Vue {
     /* 以下のような形状に変換する
      * { name: くるみ, 'big-cat': false, 'small-cat': true }
      * { name: メロウ, 'big-cat': false, 'small-cat': true } */
-    const result: OtherNotations[] = [];
+    const result: OtherNotation[] = [];
     // データの整形
     this.cats.forEach((x: CatAttr): void => {
       // nameを作成
-      const temp: OtherNotations = {
+      const temp: OtherNotation = {
         name: x.name
       };
       // name以外の要素を作成
