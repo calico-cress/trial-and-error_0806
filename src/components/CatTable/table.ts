@@ -2,7 +2,7 @@ import { Component, Vue } from 'vue-property-decorator';
 
 /**
  * 猫一覧の型
- * @interface CatList
+ * @interface CatAttr
  */
 interface CatAttr {
   name: string;
@@ -21,7 +21,7 @@ interface OtherNotation {
 /**
  * 猫一覧の横表示コンポーネント
  * @export
- * @class Kitten
+ * @class CatTable
  * @extends {Vue}
  */
 @Component
