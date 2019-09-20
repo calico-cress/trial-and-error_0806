@@ -11,7 +11,7 @@ interface CatAttr {
 }
 
 /**
- * 横表示用の型
+ * 猫一覧を横表示する型
  * @interface OtherNotations
  */
 interface OtherNotations {
@@ -42,7 +42,7 @@ export default class CatTable extends Vue {
    * @memberof CatTable
    */
   private get notations(): OtherNotations[] {
-    // 重複のないraceをまとめる
+    // 重複のないraceを抽出する
     const races = this.cats
       .map((x: CatAttr): string => x.race.replace(' ', '-').toLowerCase())
       .filter((x: string, i: number, self: string[]): boolean => {
@@ -56,11 +56,14 @@ export default class CatTable extends Vue {
     const result: OtherNotations[] = [];
     // データの整形
     this.cats.forEach((x: CatAttr): void => {
+      // nameを作成
       const temp: OtherNotations = {
         name: x.name
       };
+      // name以外の要素を作成
       races.forEach((y: string): void => {
-        temp[y] = y === x.race.replace(' ', '-').toLowerCase();
+        const flg = y === x.race.replace(' ', '-').toLowerCase();
+        temp[y] = flg ? '◯' : '−';
       });
       result.push(temp);
     });
