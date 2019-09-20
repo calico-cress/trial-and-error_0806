@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* eslint-disable @typescript-eslint/no-var-requires */
 /**
  * ## 注意 ##
@@ -16,85 +17,86 @@ console.log(`  process.env.NODE_ENV -> ${process.env.NODE_ENV}\n`);
 
 // 定義を追加したい場合、オブジェクトリテラルを追加する
 let config = [
-    {
-        // 環境によってmodeを切替える
-        mode: process.env.NODE_ENV,
-        entry: {
-            main: './src/main.ts',
-        },
-        output: {
-            path: `${__dirname}/dist`,
-            filename: '[name].bundle.js',
-            /* sourcemapをクリーンに出力する
-             * https://www.mistergoodcat.com/post/the-joy-that-is-source-maps-with-vuejs-and-typescript */
-            devtoolModuleFilenameTemplate: info => {
-                var $filename = 'sources://' + info.resourcePath;
-                if (
-                    info.resourcePath.match(/\.vue$/) &&
-                    !info.allLoaders.match(/type=script/)
-                ) {
-                    // eslint-disable-next-line prettier/prettier
-                    $filename = `webpack-generated:///${info.resourcePath}?${info.hash}`;
-                }
-                return $filename;
-            },
-            devtoolFallbackModuleFilenameTemplate:
-                'webpack:///[resource-path]?[hash]',
-        },
-        resolve: {
-            extensions: ['.ts', '.js', '.vue'], // 省略可能な拡張子の設定
-            modules: ['node_modules'],
-            alias: {
-                vue$: 'vue/dist/vue.esm.js', // import Vue from 'vue'; のためのパス指定
-            },
-        },
-        module: {
-            rules: [
-                // 拡張子がvueのファイルを解決
-                {
-                    test: /\.vue$/,
-                    loader: 'vue-loader',
-                    exclude: /node_modules/,
-                },
-                // 拡張子がtsのファイルを解決
-                {
-                    test: /\.ts$/,
-                    loader: 'ts-loader',
-                    exclude: /node_modules/,
-                    options: {
-                        appendTsSuffixTo: [/\.vue$/],
-                    },
-                },
-                // .cssファイルと.vueファイルの<style>ブロックに適用される
-                {
-                    test: /\.css$/,
-                    use: ['vue-style-loader', 'css-loader'],
-                },
-            ],
-        },
-        optimization: {
-            // 複数のバンドルファイル間で共通しているモジュールを"common_lib.bundle.js"に切り出す
-            splitChunks: {
-                name: 'common-lib',
-                chunks: 'initial',
-            },
-        },
-        // 環境によってsourcemapを切り替える
-        devtool:
-            process.env.NODE_ENV === 'development' ? 'eval-source-map' : false,
-        // 環境によって使用するプラグインを切り替える
-        plugins: [
-            new CleanWebpackPlugin(),
-            /* vue.js公式の指定
-             * todo：productionとdevelopmentで、バンドルファイルを比較したい｡｡ */
-            new DefinePlugin({
-                'process.env': {
-                    NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-                },
-            }),
-            new VueLoaderPlugin(),
-        ],
+  {
+    // 環境によってmodeを切替える
+    mode: process.env.NODE_ENV,
+    entry: {
+      main: './src/main.ts',
     },
+    output: {
+      path: `${__dirname}/dist`,
+      filename: '[name].bundle.js',
+      /* sourcemapをクリーンに出力する
+       * https://www.mistergoodcat.com/post/the-joy-that-is-source-maps-with-vuejs-and-typescript */
+      devtoolModuleFilenameTemplate: info => {
+        var $filename = 'sources://' + info.resourcePath;
+        if (
+          info.resourcePath.match(/\.vue$/) &&
+          !info.allLoaders.match(/type=script/)
+        ) {
+          // eslint-disable-next-line prettier/prettier
+          $filename = `webpack-generated:///${info.resourcePath}?${info.hash}`;
+        }
+        return $filename;
+      },
+      devtoolFallbackModuleFilenameTemplate:
+        'webpack:///[resource-path]?[hash]',
+    },
+    resolve: {
+      extensions: ['.ts', '.js', '.vue'], // 省略可能な拡張子の設定
+      modules: ['node_modules'],
+      alias: {
+        vue$: 'vue/dist/vue.esm.js', // import Vue from 'vue'; のためのパス指定
+      },
+    },
+    module: {
+      rules: [
+        // 拡張子がvueのファイルを解決
+        {
+          test: /\.vue$/,
+          loader: 'vue-loader',
+          exclude: /node_modules/,
+        },
+        // 拡張子がtsのファイルを解決
+        {
+          test: /\.ts$/,
+          loader: 'ts-loader',
+          exclude: /node_modules/,
+          options: {
+            appendTsSuffixTo: [/\.vue$/],
+          },
+        },
+        // .cssファイルと.vueファイルの<style>ブロックに適用される
+        {
+          test: /\.css$/,
+          use: ['vue-style-loader', 'css-loader'],
+        },
+      ],
+    },
+    optimization: {
+      // 複数のバンドルファイル間で共通しているモジュールを"common_lib.bundle.js"に切り出す
+      splitChunks: {
+        name: 'common-lib',
+        chunks: 'initial',
+      },
+    },
+    // 環境によってsourcemapを切り替える
+    devtool: process.env.NODE_ENV === 'development' ? 'eval-source-map' : false,
+    // 環境によって使用するプラグインを切り替える
+    plugins: [
+      new CleanWebpackPlugin(),
+      /* vue.js公式の指定 */
+      new DefinePlugin({
+        'process.env': {
+          NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        },
+      }),
+      new VueLoaderPlugin(),
+    ],
+    performance: {
+      hints: false, // パフォーマンスの警告を抑止
+    },
+  },
 ];
 
 module.exports = config;

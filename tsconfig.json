@@ -19,5 +19,9 @@
     "experimentalDecorators": true,
     // 未使用のパラメータに警告
     "noUnusedParameters": true,
+    "allowJs": true, // javascriptもコンパイル対象にし、distに移動する
+    "checkJs": true,
+    "esModuleInterop": true,
+    "outDir": "./dist"
   }
 }

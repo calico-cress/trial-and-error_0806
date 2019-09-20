@@ -1,0 +1,24 @@
+{
+  "members": [
+    {
+      "name": "だい",
+      "race": "Big cat",
+      "color": "Skin color"
+    },
+    {
+      "name": "みのりん",
+      "race": "Big cat",
+      "color": "Skin color"
+    },
+    {
+      "name": "くるみ",
+      "race": "Small cat",
+      "color": "Calico"
+    },
+    {
+      "name": "メロウ",
+      "race": "Small cat",
+      "color": "Black"
+    }
+  ]
+}

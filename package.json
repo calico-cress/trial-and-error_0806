@@ -5,9 +5,10 @@
   "description": "",
   "main": "main.bundle.js",
   "scripts": {
-    "///// BDDで開発を進める場合、右記に変更した方が使い勝手が良さそう。npm run watch & http-server & npm test /////": "",
-    "start": "npm run watch & http-server",
+    "start": "npm run watch & npm run json-serve & http-server",
     "watch": "NODE_ENV=development webpack --watch",
+    "///// テスト用 Web API /////": "",
+    "json-serve": "json-server --watch ./__tests__/db.json",
     "test": "",
     "///// 環境変数をproductionモードに変更してbuild /////": "",
     "build": "NODE_ENV=production webpack"
@@ -32,6 +33,7 @@
     "eslint-config-prettier": "^5.0.0",
     "eslint-plugin-prettier": "^3.0.1",
     "http-server": "^0.11.1",
+    "json-server": "^0.15.1",
     "prettier": "^1.18.2",
     "ts-loader": "^6.0.3",
     "typescript": "^3.5.2",
@@ -44,9 +46,8 @@
     "webpack-cli": "^3.3.4"
   },
   "dependencies": {
-    "bootstrap": "^4.1.0",
-    "jquery": "^3.3.1",
-    "popper.js": "^1.14.3",
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "^2.0.1",
     "vue": "^2.5.16"
   }
 }
