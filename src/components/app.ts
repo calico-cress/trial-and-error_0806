@@ -10,6 +10,6 @@ import Table from './CatTable/table.vue';
  */
 @Component({
   name: 'app',
-  components: { Cat, Table }, // 子componentを使用する場合、こちらに追加する
+  components: { Cat, Table } // 子componentを使用する場合、こちらに追加する
 })
 export default class AppComponent extends Vue {}

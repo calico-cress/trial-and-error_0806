@@ -21,7 +21,7 @@ let config = [
     // 環境によってmodeを切替える
     mode: process.env.NODE_ENV,
     entry: {
-      main: './src/main.ts',
+      main: './src/main.ts'
     },
     output: {
       path: `${__dirname}/dist`,
@@ -39,15 +39,14 @@ let config = [
         }
         return $filename;
       },
-      devtoolFallbackModuleFilenameTemplate:
-        'webpack:///[resource-path]?[hash]',
+      devtoolFallbackModuleFilenameTemplate: 'webpack:///[resource-path]?[hash]'
     },
     resolve: {
       extensions: ['.ts', '.js', '.vue'], // 省略可能な拡張子の設定
       modules: ['node_modules'],
       alias: {
-        vue$: 'vue/dist/vue.esm.js', // import Vue from 'vue'; のためのパス指定
-      },
+        vue$: 'vue/dist/vue.esm.js' // import Vue from 'vue'; のためのパス指定
+      }
     },
     module: {
       rules: [
@@ -55,7 +54,7 @@ let config = [
         {
           test: /\.vue$/,
           loader: 'vue-loader',
-          exclude: /node_modules/,
+          exclude: /node_modules/
         },
         // 拡張子がtsのファイルを解決
         {
@@ -63,22 +62,22 @@ let config = [
           loader: 'ts-loader',
           exclude: /node_modules/,
           options: {
-            appendTsSuffixTo: [/\.vue$/],
-          },
+            appendTsSuffixTo: [/\.vue$/]
+          }
         },
         // .cssファイルと.vueファイルの<style>ブロックに適用される
         {
           test: /\.css$/,
-          use: ['vue-style-loader', 'css-loader'],
-        },
-      ],
+          use: ['vue-style-loader', 'css-loader']
+        }
+      ]
     },
     optimization: {
       // 複数のバンドルファイル間で共通しているモジュールを"common_lib.bundle.js"に切り出す
       splitChunks: {
         name: 'common-lib',
-        chunks: 'initial',
-      },
+        chunks: 'initial'
+      }
     },
     // 環境によってsourcemapを切り替える
     devtool: process.env.NODE_ENV === 'development' ? 'eval-source-map' : false,
@@ -88,15 +87,15 @@ let config = [
       /* vue.js公式の指定 */
       new DefinePlugin({
         'process.env': {
-          NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-        },
+          NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+        }
       }),
-      new VueLoaderPlugin(),
+      new VueLoaderPlugin()
     ],
     performance: {
-      hints: false, // パフォーマンスの警告を抑止
-    },
-  },
+      hints: false // パフォーマンスの警告を抑止
+    }
+  }
 ];
 
 module.exports = config;
