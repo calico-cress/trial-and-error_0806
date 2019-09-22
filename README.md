@@ -1,6 +1,6 @@
 # trial-and-error_0806
 
-CLIを使わずに構築した TypeScript + Vue（SFC）+ bootstrap-vue
+CLIを使わずに構築した TypeScript + Vue（SFC）+ bootstrap-vue  
 ※ 本リポジトリは、基本的に編集しない
 
 ## 参考情報
